@@ -16,6 +16,9 @@ function generateLegalHelp(event) {
     "You are a legal expert and love to provide legal services. Your mission is to generate a legal help in basic HTML and separate each line with a <br/>. Make sure to follow the user instructions. Sign the legal help with 'SheCodes AI' inside a <strong> element at the end of the legal help and NOT at the beginning";
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+  let legalElement = document.querySelector("#legal");
+  legalElement.classList.remove("hidden");
+  legalElement.innerHTML = `<div class="generating">⏳Generating Legal Help about ${instructionInput.value}</div>`;
   //make call to API
   axios.get(apiUrl).then(displayLegalHelp);
 }
